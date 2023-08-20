@@ -33,21 +33,20 @@ const searchQuery = ref("")
 const queryTimeOut = ref(null)
 const mapboxSearchResults = ref(null)
 const searchError = ref(null)
-const route = useRouter()
+const router = useRouter()
 
 const previewCity = (searchResult) => {
-  console.log(searchResult)
-  const [city, state] = searchResult.place_name.split(",")
-  route.push({
+  const [city, state] = searchResult.place_name.split(",");
+  router.push({
     name: "cityView",
-    params: {state: state.replaceAll(" ", ""), city: city},
+    params: { state: state.replaceAll(" ", ""), city: city },
     query: {
       lat: searchResult.geometry.coordinates[1],
-      lg: searchResult.geometry.coordinates[0],
-      preview: true
-    }
-  })
-}
+      lng: searchResult.geometry.coordinates[0],
+      preview: true,
+    },
+  });
+};
 
 const getSearchResults = () => {
   clearTimeout(queryTimeOut.value);

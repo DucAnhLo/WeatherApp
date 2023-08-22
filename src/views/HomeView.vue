@@ -19,6 +19,7 @@
           </template>
         </ul>
       </div>
+      <TestAPI />
   </main>
 </template>
 
@@ -26,6 +27,7 @@
 import { ref } from 'vue';
 import axios from 'axios'
 import { useRouter } from 'vue-router';
+import TestAPI from '../components/TestAPI.vue';
 
 
 const mapboxAPIKey = "pk.eyJ1IjoiZHVjYW5obG8iLCJhIjoiY2xsaWIwZHc1MWFuYjNnbzM4aHdyb3prNCJ9.ig-0-rNY6TYdC_nJI7sJ9w"

@@ -10,7 +10,9 @@
 
             <div class="flex gap-3 flex-1 justify-end">
                 <i class="fa-solid fa-circle-info text-xl hover:text-weather-secondary duration-150 cursor-pointer" @click="toggleModal"></i>
-                <i class="fa-solid fa-plus text-xl hover:text-weather-secondary duration-150 cursor-pointer"  @click="addCity"></i>
+                <i class="fa-solid fa-plus text-xl hover:text-weather-secondary duration-150 cursor-pointer"  @click="addCity"
+                v-if="route.query.preview"
+                ></i>
             </div>
 
             <BaseModal :modal-active="modalActive" @close-modal="toggleModal">
@@ -59,6 +61,7 @@ const route = useRoute()
 const router = useRouter()
 const modalActive = ref(null)
 const savedCities = ref([])
+
 const addCity = () => {
     if(localStorage.getItem('saveCities')){
         savedCities.value = JSON.parse(localStorage.getItem('savedCities'))
@@ -78,6 +81,7 @@ const addCity = () => {
     delete query.preview
     router.replace({query})
 }
+
 const toggleModal = () => {
     modalActive.value = !modalActive.value
 }
